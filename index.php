@@ -1,13 +1,29 @@
-<ul>
-    <li><a href="index.php?page=truc">Truc</a></li>
-    <li><a href="index.php?page=machin">Machin</a></li>
-    <li><a href="index.php?page=michel">Michel</a></li>
-</ul>
 <?php
-if (isset($_GET['page'])){
-    $page = $_GET['page'];
-    echo $page;
+date_default_timezone_set('Europe/Paris');
+include "./includes/header.php";
+
+
+if (isset($_GET['pages'])){
+    $pages = $_GET['pages'];
 }
-else{
-    echo "Message";
+else {
+    $pages="accueil";
 }
+$path = "./includes/";
+$contenu = glob($path . "*.inc.php");
+$pages = $path . $pages . ".inc.php";
+
+if (in_array($pages,$contenu)){
+    include $pages;
+}
+else {
+    include "./includes/accueil.inc.php";
+}
+
+
+
+$pages = "./includes/" . $pages . ".php";
+include $pages;
+
+include "./includes/footer.php";
+
