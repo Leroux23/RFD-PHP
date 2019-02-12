@@ -22,8 +22,6 @@ else {
 
 
 
-$pages = "./includes/" . $pages . ".php";
-include $pages;
 
 include "./includes/footer.php";
 
